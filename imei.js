@@ -2,18 +2,18 @@
  * @providesModule react-native-imei
  */
 
-var ReactNative = require('react-native');
+ import { NativeModules, Platform } from 'react-native';
 
-if (ReactNative.Platform.OS === "android") {
-    module.exports = {
-        getImei: function () {
-            return ReactNative.NativeModules.IMEI.imei;
-        }
-    };
-} else {
-    module.exports = {
-        getImei: function () {
-            throw new Error("Not implemented");
-        }
-    }
-}
+ if (Platform.OS === "android") {
+     module.exports = {
+         getImei: function () {
+             return NativeModules.IMEI.getImei();
+         }
+     };
+ } else {
+     module.exports = {
+         getImei: function () {
+             throw new Error("Not implemented");
+         }
+     }
+ }
