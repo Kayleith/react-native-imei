@@ -24,17 +24,15 @@ public class RNImeiModule extends ReactContextBaseJavaModule {
     }
 
     @Override
-    public Map<String, Object> getConstants() {
-        final Map<String, Object> constants = new HashMap<>();
-
+    public String getImei() {
         TelephonyManager tm = (TelephonyManager) this.reactContext.getSystemService(Context.TELEPHONY_SERVICE);
-        String imei = tm.getDeviceId().trim();
+        String imei = tm.getDeviceId();
+
         if (imei.isEmpty()) {
             throw new RuntimeException("Failed to read IMEI (imei is empty!)");
         }
-        constants.put("imei", imei);
-
-        return constants;
+        
+        return imei;
     }
 
 }
