@@ -23,7 +23,6 @@ public class RNImeiModule extends ReactContextBaseJavaModule {
         return "IMEI";
     }
 
-    @Override
     public String getImei() {
         TelephonyManager tm = (TelephonyManager) this.reactContext.getSystemService(Context.TELEPHONY_SERVICE);
         String imei = tm.getDeviceId();
@@ -31,7 +30,7 @@ public class RNImeiModule extends ReactContextBaseJavaModule {
         if (imei.isEmpty()) {
             throw new RuntimeException("Failed to read IMEI (imei is empty!)");
         }
-        
+
         return imei;
     }
 
