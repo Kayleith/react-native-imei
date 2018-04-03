@@ -6,9 +6,9 @@
 
  if (Platform.OS === "android") {
      module.exports = {
-         getImei: function () {
-             return NativeModules.IMEI.getImei();
-         }
+       getImei: async function () {
+         return await NativeModules.IMEI.getImei();
+       }
      };
  } else {
      module.exports = {
