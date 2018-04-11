@@ -30,10 +30,10 @@ public class RNImeiModule extends ReactContextBaseJavaModule {
         TelephonyManager tm = (TelephonyManager) this.reactContext.getSystemService(Context.TELEPHONY_SERVICE);
         String imei = tm.getDeviceId();
 
-        if (imei.isEmpty()) {
+        if (imei == null || imei.isEmpty()) {
           promise.reject("IMEI Error", new RuntimeException("Failed to read IMEI (imei is empty!)"));
+        } else {
+          promise.resolve(imei);
         }
-
-        promise.resolve(imei);
     }
 }
